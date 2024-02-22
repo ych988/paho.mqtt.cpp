@@ -61,7 +61,6 @@ if(PAHO_BUILD_SHARED)
 
     ## Add dependencies to the shared library
     target_link_libraries(paho-mqttpp3 PUBLIC
-      eclipse-paho-mqtt-c::paho-mqtt3as
       ${PAHO_MQTT_C_LIB}
       Threads::Threads
     )
@@ -91,28 +90,3 @@ if(PAHO_BUILD_STATIC)
         set_target_properties(paho-mqttpp3-static PROPERTIES OUTPUT_NAME paho-mqttpp3)
     endif()
 endif()
-
-## --- Set common properties, etc ---
-
-include(GNUInstallDirs)
-
-foreach(TARGET ${PAHO_CPP_TARGETS})
-  ## Warnings
-  target_compile_options(${TARGET} PRIVATE
-    $<$<CXX_COMPILER_ID:MSVC>:/W3>
-    $<$<CXX_COMPILER_ID:Clang>:-Wall -Wextra -Wdocumentation>
-    $<$<NOT:$<OR:$<CXX_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:Clang>>>:-Wall -Wextra>
-  )
-
-  target_include_directories(${TARGET} PUBLIC
-      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-      $<INSTALL_INTERFACE:include>
-  )
-
-  ## install the shared library
-  install(TARGETS ${TARGET} EXPORT PahoMqttCpp
-      ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-      LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-  )
-endforeach()
