@@ -81,6 +81,6 @@ endif()
 
 # For the paho_mqtt_c module
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../3rdpart/edgex/3rdpart/include/paho)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../../3rdpart/edgex/3rdpart/include/paho)
 
 add_subdirectory(src)
