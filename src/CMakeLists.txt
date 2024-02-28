@@ -89,4 +89,11 @@ if(PAHO_BUILD_STATIC)
     if(UNIX)
         set_target_properties(paho-mqttpp3-static PROPERTIES OUTPUT_NAME paho-mqttpp3)
     endif()
+
+    set_target_properties(paho-mqttpp3-static PROPERTIES 
+        ARCHIVE_OUTPUT_DIRECTORY_DEBUG 
+        ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/debug)
+    set_target_properties(paho-mqttpp3-static PROPERTIES 
+        ARCHIVE_OUTPUT_DIRECTORY_RELEASE 
+        ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/release)
 endif()
