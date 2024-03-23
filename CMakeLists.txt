@@ -44,9 +44,9 @@ if(NOT PAHO_BUILD_SHARED AND NOT PAHO_BUILD_STATIC)
 endif()
 
 if(UNIX)
-  LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../3rdpart/edgex/3rdpart/lib_unix)
+  LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../../3rdpart/edgex/3rdpart/lib_unix)
 elseif(WIN32)
-  LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../3rdpart/edgex/3rdpart/lib)
+  LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../../3rdpart/edgex/3rdpart/lib)
 endif ()
 
 if(PAHO_WITH_SSL)
