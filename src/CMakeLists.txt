@@ -76,24 +76,24 @@ endif()
 
 if(PAHO_BUILD_STATIC)
     ## create the static library
-    add_library(paho-mqttpp3-static STATIC ${COMMON_SRC})
-    list(APPEND PAHO_CPP_TARGETS paho-mqttpp3-static)
+    add_library(paho-mqttpp3 STATIC ${COMMON_SRC})
+    list(APPEND PAHO_CPP_TARGETS paho-mqttpp3)
 
     ## add dependencies to the shared library
-    target_link_libraries(paho-mqttpp3-static PUBLIC 
+    target_link_libraries(paho-mqttpp3 PUBLIC 
       ${PAHO_MQTT_C_LIB}
       Threads::Threads
     )
 
     ## Let the archive use the same base name as the shared lib on *nix systems
     if(UNIX)
-        set_target_properties(paho-mqttpp3-static PROPERTIES OUTPUT_NAME paho-mqttpp3)
+        set_target_properties(paho-mqttpp3 PROPERTIES OUTPUT_NAME paho-mqttpp3)
     endif()
 
-    set_target_properties(paho-mqttpp3-static PROPERTIES 
+    set_target_properties(paho-mqttpp3 PROPERTIES 
         ARCHIVE_OUTPUT_DIRECTORY_DEBUG 
         ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/debug)
-    set_target_properties(paho-mqttpp3-static PROPERTIES 
+    set_target_properties(paho-mqttpp3 PROPERTIES 
         ARCHIVE_OUTPUT_DIRECTORY_RELEASE 
         ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/release)
 endif()
